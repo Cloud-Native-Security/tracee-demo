@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: strace-deployment
+  labels:
+    app: strace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: strace
+  template:
+    metadata:
+      labels:
+        app: strace
+    spec:
+      containers:
+      - name: strace
+        image: anaisurlichs/debug-container:0.2
