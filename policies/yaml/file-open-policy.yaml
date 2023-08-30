@@ -1,13 +1,14 @@
 apiVersion: aquasecurity.github.io/v1beta1
 kind: TraceePolicy
 metadata:
-    name: overview-policy
-    annotations:
-        description: sample overview policy
+  name: syscall--openat-events
+  namespace: tracee-system
+  annotations:
+    description: traces open syscall events
 spec:
-    scope:
-      - container
-    rules:
-      - event: file_modified
-      - event: open
-
+  scope:
+    - container
+  rules:
+    - event: open
+      filters:
+        - args.pathname=/usr/share/nginx/html*
