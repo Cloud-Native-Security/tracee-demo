@@ -1,0 +1,12 @@
+apiVersion: aquasecurity.github.io/v1beta1
+kind: TraceePolicy
+metadata:
+  name: write
+  annotations:
+    # https://aquasecurity.github.io/tracee/latest/docs/events/builtin/extra/file_modification/
+    description: traces write events across all scopes
+spec:
+  scope: 
+    - global
+  rules:
+    - event: file_modification
